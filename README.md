@@ -6,9 +6,8 @@ This project was made in Java Bootcamp course from InfoShareAcademy.
 * Spring MVC,
 * Thymeleaf,
 * Spring Data,
+* Spring Security,
 * JPA,
 * HTTP,
 * CSS,
 * Bootstrap,
-* Save/Read from JSON/XML,
-* OOP methodology.
