@@ -22,128 +22,32 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav text-center">
-                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <li class="nav-item">
                         <a th:href="@{/user}" class="nav-link">
-                            <span th:text="#{navbar.user}"></span>
+                            <span th:text="#{navbar.carsToFix}"></span>
                         </a>
                     </li>
 
-                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <li class="nav-item">
                         <a th:href="@{/diet}" class="nav-link">
-                            <span th:text="#{navBar.diet}"></span>
+                            <span th:text="#{navBar.addNewCar}"></span>
                         </a>
                     </li>
-
-                    <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
-                           id="dishDropdown"
-                           role="button"
-                           data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            <span th:text="#{navBar.dishes}"></span>
+                    <li class="nav-item">
+                        <a th:href="@{/diet}" class="nav-link">
+                            <span th:text="#{navBar.fixCar}"></span>
                         </a>
-                        <ul class="dropdown-menu text-center"
-                            aria-labelledby="dishDropdown">
-                            <li>
-                                <a th:href="@{/dishes/new}" class="dropdown-item" th:text="#{navbar.newDish}"></a>
-                            </li>
-                            <li>
-                                <a th:href="@{/dishes}" class="dropdown-item" th:text="#{navBar.allDishes}"></a>
-                            </li>
-                        </ul>
                     </li>
-
-                    <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
-                           id="productDropdown"
-                           role="button"
-                           data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            <span th:text="#{navbar.products}"></span>
+                    <li class="nav-item">
+                        <a th:href="@{/diet}" class="nav-link">
+                            <span th:text="#{navBar.fixedCar}"></span>
                         </a>
-                        <ul class="dropdown-menu text-center"
-                            aria-labelledby="productDropdown">
-                            <li>
-                                <a th:href="@{/products/new}" class="dropdown-item" th:text="#{navbar.newProduct}"></a>
-                            </li>
-                            <li>
-                                <a th:href="@{/products}" class="dropdown-item" th:text="#{navbar.allProducts}"></a>
-                            </li>
-                        </ul>
                     </li>
-                </ul>
-
-                <ul class="navbar-nav ms-auto text-center">
-                    <li sec:authorize="isAnonymous()" class="nav-item">
-                        <a th:href="@{/register}" class="nav-link">
-                            <span th:text="#{navBar.signUp}"></span></a>
-                    </li>
-                    <li sec:authorize="isAnonymous()" class="nav-item">
-                        <a th:href="@{/login}" class="nav-link">
-                            <span th:text="#{navBar.login}"></span></a>
-                    </li>
-
-                    <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
-                           id="navBarDropdown"
-                           role="button"
-                           data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            <span th:text="#{navBar.myAccount}"></span></a>
-                        <ul class="dropdown-menu text-center"
-                            aria-labelledby="navBarDropdown">
-
-                            <li class="dropdown-item">
-                                <a href="#" class="dropdown-item disabled"
-                                   th:text="#{navBar.loggedAs} + ${#httpServletRequest.remoteUser.substring(0,1).toUpperCase()} + ${#httpServletRequest.remoteUser.substring(1)}"></a>
-                            </li>
-
-                            <li class="dropdown-item">
-                                <a th:href="@{/user}" class="dropdown-item" th:text="#{navbar.settings}"></a>
-                            </li>
-
-                            <li class="dropdown-item">
-                                <form th:action="@{/logout}" method="post" th:hidden="true" name="LogoutForm">
-                                    <input type="submit" value="Logout"/>
-                                </form>
-                                <a href="javascript:document.LogoutForm.submit()" class="dropdown-item"
-                                   th:text="#{navBar.logout}">
-                                    <span th:text="#{navBar.logout}"></span></a>
-                            </li>
-                        </ul>
-                    </li>
-
-
                 </ul>
             </div>
         </div>
 
     </nav>
-    <!--
-JavaScript function to highlight navbar items in different endpoints
-https://stackoverflow.com/questions/49530497/how-do-i-make-bootstrap-navbar-change-active-state
- -->
-    <script>
-        $(function () {
-            function stripTrailingSlash(str) {
-                if (str.substr(-1) == '/') {
-                    return str.substr(0, str.length - 1);
-                }
-                return str;
-            }
-
-            var url = window.location.pathname;
-            var activePage = stripTrailingSlash(url);
-
-            $('.nav li a').each(function () {
-                var currentPage = stripTrailingSlash($(this).attr('href'));
-
-                if (activePage == currentPage) {
-                    $(this).parent().addClass('active');
-                }
-            });
-        });
-    </script>
 </div>
 
 </body>

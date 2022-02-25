@@ -26,10 +26,10 @@ public class VehicleEntity extends Auditable{
     @Column(name = COLUMN_PREFIX + "id")
     private UUID id;
 
-    @Column(name = COLUMN_PREFIX + "name")
+    @Column(name = COLUMN_PREFIX + "name", nullable = false)
     private String name;
 
-    @Column(name = COLUMN_PREFIX + "registrationNumber")
+    @Column(name = COLUMN_PREFIX + "registrationNumber", nullable = false)
     private String registrationNumber;
 
     @Column(name = COLUMN_PREFIX + "isFixed")
