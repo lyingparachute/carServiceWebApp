@@ -1,6 +1,7 @@
 package com.infoShare.carService.model;
 
 import com.infoShare.carService.enums.Color;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -40,4 +41,8 @@ public class VehicleEntity extends Auditable{
     @Column(name = COLUMN_PREFIX + "productionDate")
     private LocalDate productionDate;
 
+    public VehicleEntity(String name, String registrationNumber) {
+        this.name = name;
+        this.registrationNumber = registrationNumber;
+    }
 }
