@@ -15,6 +15,11 @@ public class AddVehicleController {
         this.vehicleService = vehicleService;
     }
 
+    @GetMapping("fix")
+    public String addNewVehicleToFix(){
+        return "fix-vehicle";
+    }
+
     @GetMapping("new")
     public String addNewVehicleForm(){
         return "add-vehicle-form";
