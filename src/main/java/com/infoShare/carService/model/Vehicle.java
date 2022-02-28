@@ -1,7 +1,6 @@
 package com.infoShare.carService.model;
 
 import com.infoShare.carService.enums.Color;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,11 +11,11 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name = VehicleEntity.TABLE_NAME)
+@Table(name = Vehicle.TABLE_NAME)
 @Getter
 @Setter
 @NoArgsConstructor
-public class VehicleEntity extends Auditable{
+public class Vehicle extends Auditable{
     public static final String TABLE_NAME = "vehicle";
     public static final String COLUMN_PREFIX = "v_";
 
@@ -41,7 +40,7 @@ public class VehicleEntity extends Auditable{
     @Column(name = COLUMN_PREFIX + "productionDate")
     private LocalDate productionDate;
 
-    public VehicleEntity(String name, String registrationNumber) {
+    public Vehicle(String name, String registrationNumber) {
         this.name = name;
         this.registrationNumber = registrationNumber;
     }
