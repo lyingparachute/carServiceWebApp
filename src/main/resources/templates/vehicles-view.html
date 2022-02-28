@@ -4,6 +4,44 @@
 <body>
 <div th:replace="fragments/navBar :: nav"></div>
 
+<div class="container text-center">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading" th:text="#{vehicles.title}"></h1>
+        </div>
+        <div class="container">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col" th:text="#{vehicles.registrationNumber}"></th>
+                    <th scope="col" th:text="#{vehicles.name}"></th>
+                    <th scope="col" th:text="#{vehicles.color}"></th>
+                    <th scope="col" th:text="#{vehicles.productionYear}"></th>
+                    <th scope="col" th:text="#{vehicles.incomingDate}"></th>
+                    <th scope="col"/>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="vehicle: ${vehiclesList}">
+                    <td th:text="${vehicle.registrationNumber}"/>
+                    <td th:text="${vehicle.name}"/>
+                    <td th:text="${vehicle.color}"/>
+                    <td th:text="${vehicle.productionDate}"/>
+                    <td th:text="${vehicle.productionDate}"/>
+                    <td>
+                        <div class="container">
+                            <a class="btn btn-outline-primary" th:href="@{/vehicle/fix/{id}(id=${vehicle.id})}">Fix</a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+
+
 <div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

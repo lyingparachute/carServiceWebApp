@@ -5,6 +5,7 @@ import com.infoShare.carService.dto.VehicleDto;
 import com.infoShare.carService.model.Vehicle;
 import com.infoShare.carService.repository.VehicleRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -55,5 +56,11 @@ public class VehicleService implements VehicleServiceInterface {
                 .stream()
                 .map(vehicle -> modelMapper.map(vehicle,VehicleDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<VehicleDto> findFixedVehicles(boolean isFixed) {
+        vehicleRepository.findByFixed(isFixed, Sort.by());
+        return null;
     }
 }

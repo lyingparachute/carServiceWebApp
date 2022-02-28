@@ -11,4 +11,5 @@ public interface VehicleServiceInterface {
     List<VehicleDto> getAllVehicles();
     VehicleDto getVehicleById(UUID id);
     List<VehicleDto> findVehicleByName(String name);
+    List<VehicleDto> findFixedVehicles(boolean isFixed);
 }
