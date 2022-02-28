@@ -9,8 +9,15 @@ import java.util.List;
 import java.util.UUID;
 
 public interface VehicleRepository extends JpaRepository<Vehicle, UUID> {
+    @Query("select v from Vehicle v where v.name = ?1")
     List<Vehicle> findByName(String name);
+
+    @Query("select v from Vehicle v where v.name = :name")
     List<Vehicle> findByName(String name, Sort sort);
-    @Query("select v from Vehicle v where v.isFixed = ?1")
-    List<Vehicle> findByFixed(boolean isFixed, Sort sort);
+
+    @Query("select v from Vehicle v where v.isFixed = true")
+    List<Vehicle> findByFixed(Sort sort);
+
+    @Query("select v from Vehicle v where v.isFixed = false")
+    List<Vehicle> findNotFixed(Sort sort);
 }

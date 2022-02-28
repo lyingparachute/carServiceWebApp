@@ -38,6 +38,8 @@ public class FixVehicleController {
 
     @GetMapping("fix")
     public String addVehicleToFix(Model model) {
+        //TODO
+        //Add view with input of registration plate to fix a car - change isFixed to true.
         return "fix-vehicle";
     }
 }

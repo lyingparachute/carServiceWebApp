@@ -17,13 +17,13 @@ public class VehiclesController {
 
     @GetMapping("")
     public String getAllVehicles(Model model){
-        model.addAttribute("vehiclesList", vehicleService.getAllVehicles());
+        model.addAttribute("vehiclesList", vehicleService.findNotFixedVehicles());
         return "vehicles-view";
     }
 
     @GetMapping("fixed")
-    public String getAllFixedVehicles(){
+    public String getAllFixedVehicles(Model model){
+        model.addAttribute("fixedVehicles", vehicleService.findFixedVehicles());
         return "vehicles-fixed-view";
     }
-
 }
