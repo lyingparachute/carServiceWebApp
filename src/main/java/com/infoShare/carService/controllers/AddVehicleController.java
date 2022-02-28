@@ -1,10 +1,15 @@
 package com.infoShare.carService.controllers;
 
+import com.infoShare.carService.dto.CreateVehicleDto;
+import com.infoShare.carService.dto.VehicleDto;
 import com.infoShare.carService.service.VehicleService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("vehicle")
@@ -15,18 +20,15 @@ public class AddVehicleController {
         this.vehicleService = vehicleService;
     }
 
-    @GetMapping("fix")
-    public String addNewVehicleToFix(){
-        return "fix-vehicle";
-    }
-
     @GetMapping("new")
-    public String addNewVehicleForm(){
-        return "add-vehicle-form";
+    public String getNewVehicleForm(Model model){
+        model.addAttribute("vehicle", new VehicleDto());
+        return "vehicle-form";
     }
 
-    @PostMapping("submit")
-    public String addNewVehicleSubmit(){
+    @PostMapping(value = "new")
+    public String createVehicle(@Valid @ModelAttribute("vehicle") CreateVehicleDto vehicle, Model model) {
+        model.addAttribute("vehicle", vehicleService.saveVehicle(vehicle));
         return "redirect:/vehicles";
     }
 }

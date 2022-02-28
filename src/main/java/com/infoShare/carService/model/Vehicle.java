@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Vehicle extends Auditable{
+public class Vehicle extends Auditable {
     public static final String TABLE_NAME = "vehicle";
     public static final String COLUMN_PREFIX = "v_";
 

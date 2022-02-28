@@ -1,8 +1,8 @@
 spring:
- datasource:
+  datasource:
     username: root
     password: toor
-    url: jdbc:mysql://localhost:3306/carService
+    url: jdbc:mysql://localhost:3306/carservice
     driver-class-name: com.mysql.cj.jdbc.Driver
   sql:
     init:

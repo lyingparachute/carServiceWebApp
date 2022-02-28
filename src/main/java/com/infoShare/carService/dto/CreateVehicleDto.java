@@ -14,4 +14,7 @@ import java.util.UUID;
 public class CreateVehicleDto {
     private String name;
     private String registrationNumber;
+    private boolean isFixed;
+    private Color color;
+    private LocalDate productionDate;
 }

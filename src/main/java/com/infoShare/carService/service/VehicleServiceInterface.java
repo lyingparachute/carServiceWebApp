@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface VehicleServiceInterface {
-    void saveVehicle(CreateVehicleDto createVehicleDto);
+    CreateVehicleDto saveVehicle(CreateVehicleDto createVehicleDto);
     List<VehicleDto> getAllVehicles();
     VehicleDto getVehicleById(UUID id);
     List<VehicleDto> findVehicleByName(String name);

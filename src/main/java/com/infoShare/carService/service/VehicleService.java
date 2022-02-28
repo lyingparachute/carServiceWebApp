@@ -26,9 +26,10 @@ public class VehicleService implements VehicleServiceInterface {
 
     @Override
     @Transactional
-    public void saveVehicle(CreateVehicleDto createVehicleDto) {
-        Vehicle vehicle = new Vehicle(createVehicleDto.getName(), createVehicleDto.getRegistrationNumber());
-        vehicleRepository.save(vehicle);
+    public CreateVehicleDto saveVehicle(CreateVehicleDto createVehicleDto) {
+        Vehicle vehicle = modelMapper.map(createVehicleDto, Vehicle.class);
+        Vehicle persistedEntity = vehicleRepository.save(vehicle);
+        return modelMapper.map(persistedEntity, CreateVehicleDto.class);
     }
 
     @Override
