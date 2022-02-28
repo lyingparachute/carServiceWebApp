@@ -23,11 +23,6 @@ public class VehicleService implements VehicleServiceInterface {
         this.vehicleRepository = vehicleRepository;
         this.modelMapper = modelMapper;
     }
-//    @Transactional
-//    public Vehicle saveVehicle(String name, String registrationNumber){
-//        Vehicle vehicleEntity = new Vehicle(name, registrationNumber);
-//        return vehicleRepository.save(vehicleEntity);
-//    }
 
     @Override
     @Transactional
