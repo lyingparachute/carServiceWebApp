@@ -15,15 +15,15 @@ public class VehiclesController {
         this.vehicleService = vehicleService;
     }
 
-    @GetMapping("")
-    public String getAllVehicles(Model model){
+    @GetMapping()
+    public String getVehiclesToFix(Model model){
         model.addAttribute("vehiclesList", vehicleService.findNotFixedVehicles());
-        return "vehicles-view";
+        return "vehicles";
     }
 
     @GetMapping("fixed")
-    public String getAllFixedVehicles(Model model){
+    public String getFixedVehicles(Model model){
         model.addAttribute("fixedVehicles", vehicleService.findFixedVehicles());
-        return "vehicles-fixed-view";
+        return "vehicles-fixed";
     }
 }

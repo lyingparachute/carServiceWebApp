@@ -38,7 +38,7 @@ public class Vehicle extends Auditable {
     private Color color;
 
     @Column(name = COLUMN_PREFIX + "productionDate")
-    private LocalDate productionDate;
+    private int productionDate;
 
     public Vehicle(String name, String registrationNumber) {
         this.name = name;

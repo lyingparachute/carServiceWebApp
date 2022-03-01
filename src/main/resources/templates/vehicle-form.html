@@ -1,8 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head th:replace="fragments/header :: header"> </head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="fragments/header :: header"></head>
 <body>
 <div th:replace="fragments/navBar :: nav"></div>
+
+<<div class="container text-center">
+    <section class="jumbotron text-left">
+        <div class="container">
+            <h1 class="jumbotron-heading">Vehicle</h1>
+        </div>
+        <div class="container">
+            <form th:object="${vehicle}" th:action="@{/vehicle/new}" method="post">
+
+                <label th:for="registrationNumber_input_id" th:text="#{vehicleForm.registrationNumber}"></label>
+                <input type="text" id="registrationNumber_input_id" th:field="*{registrationNumber}">
+
+                <label th:for="name_input_id" th:text="#{vehicleForm.name}">Name:</label>
+                <input type="text" id="name_input_id" th:field="*{name}">
+
+                <label th:for="color_input_id" th:text="#{vehicleForm.color}"></label>
+                <select id="color_input_id" th:field="*{color}">
+                    <option th:each="colorOpt : ${T(com.infoShare.carService.enums.Color).values()}"
+                            th:value="${colorOpt}" th:text="${colorOpt.value}"></option>
+                </select>
+
+                <label th:for="price_input_id" th:text="#{vehicleForm.productionDate}"></label>
+                <input type="number" min="1900" max="2099" step="1" id="price_input_id" th:field="*{productionDate}">
+                <div class="container">
+                    <button type="submit" class="btn btn-outline-primary" th:text="#{vehicleForm.save}"></button>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>

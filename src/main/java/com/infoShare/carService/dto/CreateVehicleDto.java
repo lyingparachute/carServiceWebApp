@@ -16,5 +16,5 @@ public class CreateVehicleDto {
     private String registrationNumber;
     private boolean isFixed;
     private Color color;
-    private LocalDate productionDate;
+    private int productionDate;
 }

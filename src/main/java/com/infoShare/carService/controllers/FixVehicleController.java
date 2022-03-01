@@ -4,11 +4,9 @@ import com.infoShare.carService.dto.VehicleDto;
 import com.infoShare.carService.service.VehicleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @Controller
@@ -29,11 +27,24 @@ public class FixVehicleController {
     @GetMapping("fix/{id}")
     public String fixVehicleView(@PathVariable UUID id, Model model) {
         VehicleDto vehicleDto = vehicleService.getVehicleById(id);
-        model.addAttribute("vehicle", vehicleDto);
         if (vehicleDto == null) {
             return "not-found";
         }
+        vehicleService.fixVehicle(vehicleDto);
+        model.addAttribute("vehicle", vehicleDto);
         return "fixed-vehicle";
+    }
+
+    @PostMapping(value = "fix{id}")
+    public String editProduct(@Valid @ModelAttribute("product") VehicleDto vehicleDto, @PathVariable UUID id, Model model) {
+        VehicleDto fixVehicle = vehicleService.fixVehicle(vehicleDto);
+
+        if (fixVehicle == null) {
+            return "error";
+        }
+
+        model.addAttribute("product", update);
+        return "product";
     }
 
     @GetMapping("fix")

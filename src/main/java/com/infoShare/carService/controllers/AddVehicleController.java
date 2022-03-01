@@ -22,7 +22,7 @@ public class AddVehicleController {
 
     @GetMapping("new")
     public String getNewVehicleForm(Model model){
-        model.addAttribute("vehicle", new VehicleDto());
+        model.addAttribute("vehicle", new CreateVehicleDto());
         return "vehicle-form";
     }
 

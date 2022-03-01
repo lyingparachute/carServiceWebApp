@@ -29,8 +29,14 @@ public class VehicleService implements VehicleServiceInterface {
     @Transactional
     public CreateVehicleDto saveVehicle(CreateVehicleDto createVehicleDto) {
         Vehicle vehicle = modelMapper.map(createVehicleDto, Vehicle.class);
+        vehicle.setFixed(false);
         Vehicle persistedEntity = vehicleRepository.save(vehicle);
         return modelMapper.map(persistedEntity, CreateVehicleDto.class);
+    }
+
+    public VehicleDto fixVehicle(VehicleDto vehicleDto) {
+        vehicleDto.setFixed(true);
+        return vehicleDto;
     }
 
     @Override
