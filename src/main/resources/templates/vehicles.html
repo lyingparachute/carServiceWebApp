@@ -27,7 +27,7 @@
                     <td th:text="${vehicle.name}"/>
                     <td th:text="${vehicle.color}"/>
                     <td th:text="${vehicle.productionDate}"/>
-                    <td th:text="${vehicle.productionDate}"/>
+                    <td th:text="${vehicle.created_at}"/>
                     <td>
                         <div class="container">
                             <a class="btn btn-outline-primary" th:href="@{/vehicle/fix/{id}(id=${vehicle.id})}" th:text="#{vehicles.fix}"></a>

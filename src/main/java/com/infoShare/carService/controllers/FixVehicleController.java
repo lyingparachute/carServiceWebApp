@@ -26,25 +26,12 @@ public class FixVehicleController {
 
     @GetMapping("fix/{id}")
     public String fixVehicleView(@PathVariable UUID id, Model model) {
-        VehicleDto vehicleDto = vehicleService.getVehicleById(id);
+        VehicleDto vehicleDto = vehicleService.fixVehicleById(id);
         if (vehicleDto == null) {
             return "not-found";
         }
-        vehicleService.fixVehicle(vehicleDto);
         model.addAttribute("vehicle", vehicleDto);
         return "fixed-vehicle";
-    }
-
-    @PostMapping(value = "fix{id}")
-    public String fixVehicle(@Valid @ModelAttribute("vehicle") VehicleDto vehicleDto, @PathVariable UUID id, Model model) {
-        VehicleDto fixVehicle = vehicleService.fixVehicle(vehicleDto);
-
-        if (fixVehicle == null) {
-            return "error";
-        }
-
-        model.addAttribute("vehicle", fixVehicle);
-        return "vehicles-fixed";
     }
 
     @GetMapping("fix")

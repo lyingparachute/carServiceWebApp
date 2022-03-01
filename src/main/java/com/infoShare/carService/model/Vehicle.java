@@ -8,6 +8,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
@@ -39,6 +40,16 @@ public class Vehicle extends Auditable {
 
     @Column(name = COLUMN_PREFIX + "productionDate")
     private int productionDate;
+
+    @Override
+    public OffsetDateTime getCreatedAt() {
+        return super.getCreatedAt();
+    }
+
+    @Override
+    public OffsetDateTime getUpdatedAt() {
+        return super.getUpdatedAt();
+    }
 
     public Vehicle(String name, String registrationNumber) {
         this.name = name;
