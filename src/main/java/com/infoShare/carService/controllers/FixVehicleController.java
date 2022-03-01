@@ -36,15 +36,15 @@ public class FixVehicleController {
     }
 
     @PostMapping(value = "fix{id}")
-    public String editProduct(@Valid @ModelAttribute("product") VehicleDto vehicleDto, @PathVariable UUID id, Model model) {
+    public String fixVehicle(@Valid @ModelAttribute("vehicle") VehicleDto vehicleDto, @PathVariable UUID id, Model model) {
         VehicleDto fixVehicle = vehicleService.fixVehicle(vehicleDto);
 
         if (fixVehicle == null) {
             return "error";
         }
 
-        model.addAttribute("product", update);
-        return "product";
+        model.addAttribute("vehicle", fixVehicle);
+        return "vehicles-fixed";
     }
 
     @GetMapping("fix")

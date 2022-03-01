@@ -35,8 +35,9 @@ public class VehicleService implements VehicleServiceInterface {
     }
 
     public VehicleDto fixVehicle(VehicleDto vehicleDto) {
-        vehicleDto.setFixed(true);
-        return vehicleDto;
+        Vehicle vehicle = modelMapper.map(vehicleDto, Vehicle.class);
+        vehicle.setFixed(true);
+        return modelMapper.map(vehicle, VehicleDto.class);
     }
 
     @Override
