@@ -5,34 +5,77 @@
 <body>
 <div th:replace="fragments/navBar :: nav"></div>
 
-<<div class="container text-center">
-    <section class="jumbotron text-left">
-        <div class="container">
-            <h1 class="jumbotron-heading">Vehicle</h1>
-        </div>
-        <div class="container">
-            <form th:object="${vehicle}" th:action="@{/vehicle/new}" method="post">
+<section class="py-5 mt-0 align-items-center d-flex bg-light"
+         style="min-height: 50vh;">
+    <div class="container w-50">
+        <div class="d-flex justify-content-center">
+            <div class="card shadow">
+                <h1 class="card-header text-center m-4"
+                    th:text="#{vehicleForm.headline}"></h1>
+                <div class="card-body mx-4">
+                    <form class="form-group needs-validation"
+                          th:object="${vehicle}"
+                          th:action="@{/vehicle/new}"
+                          method="post">
 
-                <label th:for="registrationNumber_input_id" th:text="#{vehicleForm.registrationNumber}"></label>
-                <input type="text" id="registrationNumber_input_id" th:field="*{registrationNumber}">
+                        <div class="row mb-4">
+                            <label class="col-form-label col-sm-6"
+                                   th:for="registrationNumber_input_id"
+                                   th:text="#{vehicleForm.registrationNumber}">
+                            </label>
+                            <div class="col-sm-5">
+                                <input class="form-control"
+                                       type="text" id="registrationNumber_input_id" th:field="*{registrationNumber}">
+                            </div>
+<!--                            <div class="alert alert-danger" th:if="${#fields.hasErrors('registrationNumber')}"-->
+<!--                                 th:errors="*{registrationNumber}"></div>-->
+                        </div>
 
-                <label th:for="name_input_id" th:text="#{vehicleForm.name}">Name:</label>
-                <input type="text" id="name_input_id" th:field="*{name}">
+                        <div class="row mb-4">
+                            <label class="col-form-label col-sm-6"
+                                   th:for="name_input_id"
+                                   th:text="#{vehicleForm.name}">
+                            </label>
+                            <div class="col-sm-5">
+                                <input class="form-control"
+                                       type="text" id="name_input_id" th:field="*{name}">
+                            </div>
 
-                <label th:for="color_input_id" th:text="#{vehicleForm.color}"></label>
-                <select id="color_input_id" th:field="*{color}">
-                    <option th:each="colorOpt : ${T(com.infoShare.carService.enums.Color).values()}"
-                            th:value="${colorOpt}" th:text="${colorOpt.value}"></option>
-                </select>
+                            <div class="row mb-4">
+                                <label class="ccol-form-label col-sm-6"
+                                       th:for="color_input_id" th:text="#{vehicleForm.color}"></label>
+                                <div class="col-sm-5">
+                                    <select class="form-select"
+                                            id="color_input_id"
+                                            th:field="*{color}">
+                                        <option th:each="colorOpt : ${T(com.infoShare.carService.enums.Color).values()}"
+                                                th:value="${colorOpt}" th:text="${colorOpt.value}"></option>
+                                    </select>
+                                </div>
+                            </div>
 
-                <label th:for="price_input_id" th:text="#{vehicleForm.productionDate}"></label>
-                <input type="number" min="1900" max="2099" step="1" id="price_input_id" th:field="*{productionDate}">
-                <div class="container">
-                    <button type="submit" class="btn btn-outline-primary" th:text="#{vehicleForm.save}"></button>
+                            <div class="row mb-4">
+                                <label class="col-form-label col-sm-6"
+                                       th:for="price_input_id"
+                                       th:text="#{vehicleForm.productionDate}">
+                                </label>
+                                <div class="col-sm-5">
+                                    <input class="form-control"
+                                           type="number" min="1900" max="2099" step="1" id="price_input_id"
+                                           th:field="*{productionDate}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <button type="submit" class="btn btn-outline-success"
+                                        th:text="#{vehicleForm.save}"></button>
+                            </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 </div>
 
 <div th:replace="fragments/footer :: footer"></div>

@@ -35,8 +35,9 @@ public class VehicleService implements VehicleServiceInterface {
     }
 
     public VehicleDto fixVehicleById(UUID id) {
+        VehicleDto vehicleById = getVehicleById(id);
         vehicleRepository.updateVehicle(true , id);
-        return getVehicleById(id);
+        return vehicleById;
     }
 
     @Override
@@ -64,17 +65,27 @@ public class VehicleService implements VehicleServiceInterface {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public List<VehicleDto> findByRegistrationNumber(String registrationNumber){
+        List<Vehicle> vehicleByRegistration = vehicleRepository.findByRegistrationNumber(registrationNumber);
+        return vehicleByRegistration.stream()
+                .map(vehicle -> modelMapper.map(vehicle, VehicleDto.class))
+                .collect(Collectors.toList());
+    }
+
     @Override
     public List<VehicleDto> findFixedVehicles() {
         return vehicleRepository.findByFixed(Sort.by(Sort.Direction.ASC, "productionDate"))
-                .stream().map(vehicle -> modelMapper.map(vehicle, VehicleDto.class))
+                .stream()
+                .map(vehicle -> modelMapper.map(vehicle, VehicleDto.class))
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<VehicleDto> findNotFixedVehicles() {
         return vehicleRepository.findNotFixed(Sort.by(Sort.Direction.ASC, "productionDate"))
-                .stream().map(vehicle -> modelMapper.map(vehicle, VehicleDto.class))
+                .stream()
+                .map(vehicle -> modelMapper.map(vehicle, VehicleDto.class))
                 .collect(Collectors.toList());
     }
 }

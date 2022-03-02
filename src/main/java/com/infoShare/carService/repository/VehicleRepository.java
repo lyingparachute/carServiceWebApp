@@ -17,6 +17,9 @@ public interface VehicleRepository extends JpaRepository<Vehicle, UUID> {
     @Query("select v from Vehicle v where v.name = :name")
     List<Vehicle> findByName(String name, Sort sort);
 
+    @Query("select v from Vehicle v where v.registrationNumber = ?1")
+    List<Vehicle> findByRegistrationNumber(String registrationNumber);
+
     @Query("select v from Vehicle v where v.isFixed = true")
     List<Vehicle> findByFixed(Sort sort);
 

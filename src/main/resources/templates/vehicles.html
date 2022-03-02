@@ -25,7 +25,7 @@
                 <tr th:each="vehicle: ${vehiclesList}">
                     <td th:text="${vehicle.registrationNumber}"/>
                     <td th:text="${vehicle.name}"/>
-                    <td th:text="${vehicle.color}"/>
+                    <td th:text="${vehicle.color.value}"/>
                     <td th:text="${vehicle.productionDate}"/>
                     <td th:text="${vehicle.created_at}"/>
                     <td>
