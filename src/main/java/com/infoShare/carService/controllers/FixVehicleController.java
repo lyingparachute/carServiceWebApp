@@ -43,7 +43,8 @@ public class FixVehicleController {
     public String getRegultOfSearch(@Param("registration") String registration, Model model) {
         model.addAttribute("vehiclesList", vehicleService.findByRegistrationNumber(registration));
         model.addAttribute("registration", registration);
-        model.addAttribute("describtion", "Search describtion for '" + registration + "':");
+        model.addAttribute("describtion", "Search for '" + registration + "' in registration plates:");
+        model.addAttribute("tableDesc", "List of vehicles with registration plate including sign '"+ registration +"' in it:");
         return "vehicle-search-result";
     }
 }
