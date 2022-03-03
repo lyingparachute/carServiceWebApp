@@ -1,10 +1,13 @@
 package com.infoShare.carService.model;
 
 import com.infoShare.carService.enums.Color;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,6 +19,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Vehicle extends Auditable {
     public static final String TABLE_NAME = "vehicle";
     public static final String COLUMN_PREFIX = "v_";
@@ -41,15 +45,13 @@ public class Vehicle extends Auditable {
     @Column(name = COLUMN_PREFIX + "productionDate")
     private int productionDate;
 
-    @Override
-    public OffsetDateTime getCreatedAt() {
-        return super.getCreatedAt();
-    }
+    @CreatedDate
+    @Column(name = COLUMN_PREFIX + "created_at", nullable = false, updatable = false)
+    private OffsetDateTime createdAt;
 
-    @Override
-    public OffsetDateTime getUpdatedAt() {
-        return super.getUpdatedAt();
-    }
+    @LastModifiedDate
+    @Column(name = COLUMN_PREFIX + "updated_at", nullable = false)
+    private OffsetDateTime updatedAt;
 
     public Vehicle(String name, String registrationNumber) {
         this.name = name;
