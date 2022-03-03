@@ -45,6 +45,7 @@ public class Vehicle extends Auditable {
     @Column(name = COLUMN_PREFIX + "productionDate")
     private int productionDate;
 
+    
     @CreatedDate
     @Column(name = COLUMN_PREFIX + "created_at", nullable = false, updatable = false)
     private OffsetDateTime createdAt;

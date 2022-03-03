@@ -75,7 +75,7 @@ public class VehicleService implements VehicleServiceInterface {
 
     @Override
     public List<VehicleDto> findFixedVehicles() {
-        return vehicleRepository.findByFixed(Sort.by(Sort.Direction.ASC, "productionDate"))
+        return vehicleRepository.findByFixed(Sort.by(Sort.Direction.DESC, "updatedAt"))
                 .stream()
                 .map(vehicle -> modelMapper.map(vehicle, VehicleDto.class))
                 .collect(Collectors.toList());

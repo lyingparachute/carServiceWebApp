@@ -4,7 +4,7 @@
 <body>
 <div th:replace="fragments/navBar :: nav"></div>
 
-<div class="container text-center">
+<div class="container text-center" style="min-height: 50px;">
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading" th:text="#{vehiclesToFix.title}"></h1>
@@ -27,7 +27,7 @@
                     <td th:text="${vehicle.name}"/>
                     <td th:text="${vehicle.color.value}"/>
                     <td th:text="${vehicle.productionDate}"/>
-                    <td th:text="${vehicle.getCreated_at()}"/>
+                    <td th:text="${vehicle.createdAt}"/>
                     <td>
                         <div class="container">
                             <a class="btn btn-outline-primary" th:href="@{/vehicle/fix/{id}(id=${vehicle.id})}" th:text="#{vehicles.fix}"></a>
