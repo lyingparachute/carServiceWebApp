@@ -35,9 +35,10 @@ public class VehicleService implements VehicleServiceInterface {
     }
 
     public VehicleDto fixVehicleById(UUID id) {
-        VehicleDto vehicleById = getVehicleById(id);
-        vehicleRepository.updateVehicle(true , id);
-        return vehicleById;
+        Vehicle vehicleToUpdate = vehicleRepository.getById(id);
+        vehicleToUpdate.setFixed(true);
+        vehicleRepository.save(vehicleToUpdate);
+        return modelMapper.map(vehicleToUpdate, VehicleDto.class);
     }
 
     @Override
