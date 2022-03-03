@@ -38,12 +38,15 @@
                             </label>
                             <div class="col-sm-5">
                                 <input class="form-control"
-                                       type="text" id="name_input_id" th:field="*{name}">
+                                       type="text" id="name_input_id"
+                                       th:field="*{name}">
                             </div>
 
                             <div class="row mb-4">
                                 <label class="ccol-form-label col-sm-6"
-                                       th:for="color_input_id" th:text="#{vehicleForm.color}"></label>
+                                       th:for="color_input_id"
+                                       th:text="#{vehicleForm.color}">
+                                </label>
                                 <div class="col-sm-5">
                                     <select class="form-select"
                                             id="color_input_id"
@@ -61,14 +64,16 @@
                                 </label>
                                 <div class="col-sm-5">
                                     <input class="form-control"
-                                           type="number" min="1900" max="2099" step="1" id="price_input_id"
+                                           type="number" min="1900" max="2023" step="1" id="price_input_id"
                                            th:field="*{productionDate}">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
+                                <div class="col-4">
                                 <button type="submit" class="btn btn-outline-success"
                                         th:text="#{vehicleForm.save}"></button>
+                                </div>
                             </div>
                     </form>
                 </div>
