@@ -5,29 +5,28 @@
 <body>
 <div th:replace="fragments/navBar :: nav"></div>
 
-<section class="py-5 mt-0 align-items-center d-flex bg-light"
+<section class="py-5 mt-0 align-items-flex-start bg-light"
          style="min-height: 50vh;">
     <div class="container w-50">
-        <div class="justify-content-center">
             <div class="card shadow">
                 <h2 class="card-header text-center m-3"
                     th:text="#{vehicleForm.headline}"></h2>
-                <div class="card-body mx-4">
+                <div class="card-body">
 
                     <form class="form-inline needs-validation"
                           th:object="${vehicle}"
                           th:action="@{/vehicle/new}"
                           method="post">
-                        <div class="form-group">
+                        <div class="form-group grid ">
 
-                            <div class="row mb-4">
-                                <div class="col-sm-5">
+                            <div class="row mb-2 mx-auto">
+                                <div class="col-sm">
                                     <label class="col-form-label"
                                            th:for="registrationNumber_input_id"
                                            th:text="#{vehicleForm.registrationNumber}">
                                     </label>
                                 </div>
-                                <div class="col-sm-5">
+                                <div class="col-sm">
                                     <input class="form-control"
                                            type="text" id="registrationNumber_input_id"
                                            th:field="*{registrationNumber}">
@@ -36,27 +35,27 @@
                                 <!--                                 th:errors="*{registrationNumber}"></div>-->
                             </div>
 
-                            <div class="row mb-4">
-                                <div class="col-sm-5">
+                            <div class="row mb-2 mx-auto">
+                                <div class="col-sm">
                                 <label class="col-form-label"
                                        th:for="name_input_id"
                                        th:text="#{vehicleForm.name}">
                                 </label>
                                 </div>
-                                <div class="col-sm-5">
+                                <div class="col-sm">
                                     <input class="form-control"
                                            type="text" id="name_input_id"
                                            th:field="*{name}">
                                 </div>
 
-                                <div class="row mb-4">
-                                    <div class="col-sm-5">
+                                <div class="row mb-2 mx-auto">
+                                    <div class="col-sm">
                                     <label class="col-form-label"
                                            th:for="color_input_id"
                                            th:text="#{vehicleForm.color}">
                                     </label>
                                 </div>
-                                    <div class="col-sm-5">
+                                    <div class="col-sm">
                                         <select class="form-select"
                                                 id="color_input_id"
                                                 th:field="*{color}">
@@ -66,22 +65,22 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-4">
-                                    <div class="col-sm-5">
+                                <div class="row mb-2 mx-auto align-items-start">
+                                    <div class="col-sm">
                                     <label class="col-form-label"
-                                           th:for="price_input_id"
+                                           th:for="productionDate_input_id"
                                            th:text="#{vehicleForm.productionDate}">
                                     </label>
                                     </div>
-                                    <div class="col-sm-5">
+                                    <div class="col-sm">
                                         <input class="form-control"
-                                               type="number" min="1900" max="2023" step="1" id="price_input_id"
+                                               type="number" min="1900" max="2023" step="1" id="productionDate_input_id"
                                                th:field="*{productionDate}">
                                     </div>
                                 </div>
 
-                                <div class="row mb-3 justify-content-center">
-                                    <div class="col-5">
+                                <div class="row mb-2 mx-auto">
+                                    <div class="col">
                                         <button type="submit" class="btn btn-outline-success"
                                                 th:text="#{vehicleForm.save}"></button>
                                     </div>
