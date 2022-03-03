@@ -1,12 +1,13 @@
 package com.infoShare.carService.dto;
 
 import com.infoShare.carService.enums.Color;
-import com.infoShare.carService.model.Auditable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.UUID;
 
 @Data
@@ -20,8 +21,14 @@ public class VehicleDto {
     private boolean isFixed;
     private Color color;
     private int productionDate;
+    private OffsetDateTime createdAt;
+    private OffsetDateTime updatedAt;
 
-    private OffsetDateTime created_at;
-    private OffsetDateTime updated_at;
+    public String getCreatedAt() {
+        return createdAt.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT));
+    }
 
+    public String getUpdatedAt() {
+        return updatedAt.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT));
+    }
 }
