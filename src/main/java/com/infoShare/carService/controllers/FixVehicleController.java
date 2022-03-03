@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.UUID;
 
 @Controller
@@ -22,7 +21,7 @@ public class FixVehicleController {
     @GetMapping("fixed")
     public String fixedVehicles(Model model) {
 
-        return "fix-vehicle";
+        return "vehicle-search";
     }
 
     @GetMapping("fix/{id}")
@@ -36,8 +35,15 @@ public class FixVehicleController {
     }
 
     @GetMapping("fix")
-    public String getVehicleByRegistrationNumber(Model model, @Param("registrationNumber") String registrationNumber) {
-        model.addAttribute("vehicle", vehicleService.findByRegistrationNumber(registrationNumber));
-        return "fix-vehicle";
+    public String getVehicleSearchView() {
+        return "vehicle-search";
+    }
+
+    @GetMapping("fix/search")
+    public String getRegultOfSearch(@Param("registration") String registration, Model model) {
+        model.addAttribute("vehiclesList", vehicleService.findByRegistrationNumber(registration));
+        model.addAttribute("registration", registration);
+        model.addAttribute("describtion", "Search describtion for '" + registration + "':");
+        return "vehicle-search-result";
     }
 }

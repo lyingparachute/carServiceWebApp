@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="fragments/header :: header"></head>
+<body>
+<div th:replace="fragments/navBar :: nav"></div>
+<section class="px-5 mt-0 align-items-center d-flex bg-light" ,
+         style="min-height: 40vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-8">
+                <div class="card shadow">
+                    <div class="card-body mx-auto d-grid gap-3">
+                        <h2 class="card-header mb-4 text-center"
+                            th:text="#{fixVehicle.fix}"></h2>
+                        <p class="text-center"
+                           th:text="#{fixVehicle.desc}"></p>
+                        <form th:action="@{/vehicle/fix/search}"
+
+                              method="get">
+                            <div class="form-group input-group">
+                                <input type="search" name="registration" size="20"
+                                       class="form-control"
+                                       th:placeholder="#{fixVehicle.input}" required/>
+                                <input type="submit"
+                                       value="Search"
+                                       class="btn btn-outline-success"
+                                       th:value="#{fixVehicle.search}"/>
+                            </div>
+                        </form>
+                        <div class="h4 m-auto" th:text="${describtion}">
+                        </div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col" th:text="#{vehicles.registrationNumber}"></th>
+                                <th scope="col" th:text="#{vehicles.name}"></th>
+                                <th scope="col" th:text="#{vehicles.color}"></th>
+                                <th scope="col" th:text="#{vehicles.productionYear}"></th>
+                                <th scope="col" th:text="#{vehicles.incomingDate}"></th>
+                                <th scope="col"/>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="vehicle: ${vehiclesList}">
+                                <td th:text="${vehicle.registrationNumber}"/>
+                                <td th:text="${vehicle.name}"/>
+                                <td th:text="${vehicle.color.value}"/>
+                                <td th:text="${vehicle.productionDate}"/>
+                                <td th:text="${vehicle.created_at}"/>
+                                <td>
+                                    <a class="btn btn-outline-primary" th:href="@{/vehicle/fix/{id}(id=${vehicle.id})}"
+                                       th:text="#{vehicles.fix}"></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

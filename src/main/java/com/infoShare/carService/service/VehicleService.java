@@ -67,7 +67,7 @@ public class VehicleService implements VehicleServiceInterface {
 
     @Transactional
     public List<VehicleDto> findByRegistrationNumber(String registrationNumber){
-        List<Vehicle> vehicleByRegistration = vehicleRepository.findByRegistrationNumber(registrationNumber);
+        List<Vehicle> vehicleByRegistration = vehicleRepository.findByRegistrationNumberAndFixed(registrationNumber);
         return vehicleByRegistration.stream()
                 .map(vehicle -> modelMapper.map(vehicle, VehicleDto.class))
                 .collect(Collectors.toList());
