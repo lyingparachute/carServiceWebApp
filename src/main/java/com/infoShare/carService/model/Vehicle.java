@@ -45,15 +45,6 @@ public class Vehicle extends Auditable {
     @Column(name = COLUMN_PREFIX + "productionDate")
     private int productionDate;
 
-    
-    @CreatedDate
-    @Column(name = COLUMN_PREFIX + "created_at", nullable = false, updatable = false)
-    private OffsetDateTime createdAt;
-
-    @LastModifiedDate
-    @Column(name = COLUMN_PREFIX + "updated_at", nullable = false)
-    private OffsetDateTime updatedAt;
-
     public Vehicle(String name, String registrationNumber) {
         this.name = name;
         this.registrationNumber = registrationNumber;
