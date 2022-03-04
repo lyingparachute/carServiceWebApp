@@ -3,12 +3,15 @@ package com.infoShare.carService.enums;
 public enum Color {
     BLACK("Black"),
     WHITE("White"),
-    GREY("Grey"),
     SILVER("Silver"),
+    GREY("Grey"),
+    BLUE("Blue"),
     RED("Red"),
+    BROWN("Brown"),
+    GREEN("Green"),
+    YELLOW("Yellow"),
     PINK("Pink"),
-    PURPLE("Purple"),
-    GREEN("Green");
+    PURPLE("Purple");
 
     private final String value;
 
