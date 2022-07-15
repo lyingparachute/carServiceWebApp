@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    username: root
+    password: toor
+    url: jdbc:mysql://localhost:3306/carservice
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      platform: mysql
+      mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
