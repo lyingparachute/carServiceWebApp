@@ -33,7 +33,7 @@ public class Vehicle extends Auditable {
     @Column(name = COLUMN_PREFIX + "name", nullable = false)
     private String name;
 
-    @Column(name = COLUMN_PREFIX + "registrationNumber", nullable = false)
+    @Column(name = COLUMN_PREFIX + "registrationNumber", nullable = false, length = 9)
     private String registrationNumber;
 
     @Column(name = COLUMN_PREFIX + "isFixed")
