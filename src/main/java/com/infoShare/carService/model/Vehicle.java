@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -33,7 +34,7 @@ public class Vehicle extends Auditable {
     @Column(name = COLUMN_PREFIX + "name", nullable = false)
     private String name;
 
-    @Column(name = COLUMN_PREFIX + "registrationNumber", nullable = false, length = 9)
+    @Column(name = COLUMN_PREFIX + "registrationNumber", unique = true, nullable = false, length = 9)
     private String registrationNumber;
 
     @Column(name = COLUMN_PREFIX + "isFixed")
