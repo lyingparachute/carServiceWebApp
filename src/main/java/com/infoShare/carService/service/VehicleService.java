@@ -46,7 +46,7 @@ public class VehicleService implements VehicleServiceInterface {
     public List<VehicleDto> getAllVehicles() {
         List<Vehicle> allVehicles = vehicleRepository.findAll();
         return allVehicles.stream()
-                .map(vehicle -> modelMapper.map(allVehicles, VehicleDto.class))
+                .map(vehicle -> modelMapper.map(vehicle, VehicleDto.class))
                 .collect(Collectors.toList());
     }
 
